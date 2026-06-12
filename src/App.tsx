@@ -4,12 +4,12 @@ import { ClientManager } from './components/ClientManager';
 import { ConfigViewer } from './components/ConfigViewer';
 import { ServerSettingsType, ClientType, FirewallType, RouteType } from './types';
 import { generateSecureKey, getMockPublicKey, getNextIpAddress } from './utils';
-import { ShieldAlert, BookOpen, ExternalLink, ShieldCheck, Cpu, Sun, Moon } from 'lucide-react';
+import { ShieldAlert, BookOpen, ExternalLink, ShieldCheck, Cpu, Sun, Moon, RefreshCw } from 'lucide-react';
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const saved = localStorage.getItem('wg_theme');
-    return (saved === 'light' || saved === 'dark') ? (saved as 'light' | 'dark') : 'dark';
+    return (saved === 'light' || saved === 'dark') ? (saved as 'light' | 'dark') : 'light';
   });
 
   const [settings, setSettings] = useState<ServerSettingsType>(() => {
@@ -153,46 +153,12 @@ export default function App() {
     <div className={`min-h-screen flex flex-col antialiased transition-colors duration-200 ${
       theme === 'light' ? 'bg-slate-50 text-slate-800' : 'bg-slate-950 text-slate-100'
     }`}>
-      {/* Top Banner Status Bar */}
-      <div className={`border-b py-2.5 px-4 sm:px-6 transition-colors ${
-        theme === 'light' 
-          ? 'bg-slate-100 border-slate-200 text-slate-600' 
-          : 'bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border-slate-800 text-slate-300'
-      }`}>
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className={`font-mono ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>
-              Platform Status: <span className={theme === 'light' ? 'text-slate-700' : 'text-slate-200'}>Local Config Compiler Ready</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className={`flex items-center gap-1.5 font-sans ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
-              <ShieldCheck className="w-4 h-4 text-emerald-500" /> Private Sandbox Generation
-            </span>
-            <span className={theme === 'light' ? 'text-slate-300' : 'text-slate-700'}>|</span>
-            <button
-              onClick={handleClearPersistence}
-              className={`hover:text-red-500 transition-colors cursor-pointer text-xs underline decoration-dotted underline-offset-2 ${
-                theme === 'light' ? 'text-slate-550' : 'text-slate-400'
-              }`}
-            >
-              Reset to defaults
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* Main Headers */}
       <header className="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-10 pb-6 flex flex-col gap-3">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             {/* Glowing Logo */}
-            <div className="relative p-2.5 bg-gradient-to-br from-indigo-505 to-indigo-700 rounded-2xl shadow-lg shadow-indigo-505/20">
+            <div className="relative p-2.5 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl shadow-lg shadow-indigo-500/20">
               <div className="absolute inset-0 rounded-2xl bg-indigo-500 blur-sm opacity-50"></div>
               <Cpu className="w-7 h-7 text-white relative z-10" />
             </div>
@@ -215,24 +181,32 @@ export default function App() {
             {/* Toggle Day/Night view button */}
             <button
               onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border text-xs font-semibold select-none transition-all cursor-pointer ${
+              className={`flex items-center justify-center p-2 rounded-xl border transition-all cursor-pointer select-none ${
                 theme === 'light'
-                  ? 'bg-white border-slate-205 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm shadow-slate-100/50'
+                  ? 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm shadow-slate-100/50'
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
               }`}
               title="Toggle Day/Night view"
             >
               {theme === 'light' ? (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-indigo-600 font-bold" />
-                  <span>Night view</span>
-                </>
+                <Moon className="w-4 h-4 text-indigo-600" />
               ) : (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Day view</span>
-                </>
+                <Sun className="w-4 h-4 text-amber-400" />
               )}
+            </button>
+
+            {/* Reset Defaults button */}
+            <button
+              onClick={handleClearPersistence}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer select-none ${
+                theme === 'light'
+                  ? 'bg-white border-slate-200 text-slate-500 hover:bg-red-50 hover:text-red-650 hover:border-red-200 shadow-sm'
+                  : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-red-950/15 hover:text-red-400 hover:border-red-900/50'
+              }`}
+              title="Reset all settings to defaults"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>Reset Defaults</span>
             </button>
 
             <a
@@ -241,7 +215,7 @@ export default function App() {
               referrerPolicy="no-referrer"
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                 theme === 'light'
-                  ? 'bg-white border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-705 shadow-sm'
+                  ? 'bg-white border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-700 shadow-sm'
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
               }`}
             >
@@ -316,22 +290,6 @@ export default function App() {
           />
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className={`mt-auto border-t py-8 px-4 text-center text-[11px] tracking-wide select-none ${
-        theme === 'light'
-          ? 'border-slate-200 bg-slate-100 text-slate-500'
-          : 'border-slate-900 bg-slate-950/80 text-slate-500'
-      }`}>
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>
-            WireGuard® and the WireGuard logo are registered trademarks of Jason A. Donenfeld.
-          </p>
-          <p className="font-mono">
-            Secure client-side compiler v1.1.2 (No server dependencies, ready for Host / Github Page)
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

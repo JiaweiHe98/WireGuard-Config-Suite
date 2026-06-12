@@ -113,7 +113,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
       id="wg-client-manager-root" 
       className={`border rounded-2xl p-6 shadow-xl flex flex-col gap-6 transition-colors ${
         isLight 
-          ? 'bg-white border-slate-250 text-slate-800 shadow-slate-100/40' 
+          ? 'bg-white border-slate-200 text-slate-800 shadow-slate-100/40' 
           : 'bg-slate-900 border-slate-800 text-slate-100'
       }`}
     >
@@ -133,7 +133,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
             <h2 className={`font-sans font-semibold text-lg tracking-tight ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
               2. Client Peers ({clients.length})
             </h2>
-            <p className={`text-xs ${isLight ? 'text-slate-505' : 'text-slate-400'}`}>Add secure users or individual client devices</p>
+            <p className={`text-xs ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Add secure users or individual client devices</p>
           </div>
         </div>
 
@@ -167,7 +167,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 id="input-new-client-name"
                 type="text"
                 className={`border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-105'
+                  isLight ? 'bg-white border-slate-200 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-100'
                 }`}
                 placeholder="e.g. iPhone-Vance or Home-PC"
                 value={newClientName}
@@ -191,7 +191,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                           : 'bg-indigo-500/10 border-indigo-500 text-indigo-300'
                         : isLight
                           ? 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'
-                          : 'bg-slate-900 border-slate-850 text-slate-400 hover:border-slate-800'
+                          : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-800'
                     }`}
                   >
                     {getDeviceIcon(preset)}
@@ -206,7 +206,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
             <div className="flex flex-col gap-1.5">
               <label className={`text-xs font-medium flex items-center gap-1 ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
                 Routing / Split-Tunneling
-                <span className="tooltip group relative cursor-pointer text-slate-500 hover:text-slate-300">
+                <span className="tooltip group relative cursor-pointer text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className={`absolute text-[10px] w-52 p-2 rounded-lg -top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all pointer-events-none border z-10 ${
                     isLight ? 'bg-white border-slate-200 text-slate-700 shadow-md' : 'bg-slate-950 border-slate-800 text-slate-300'
@@ -217,8 +217,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               </label>
               <select
                 id="select-route-type"
-                className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
+                className={`border rounded-lg px-3 py-2 text-xs cursor-pointer focus:outline-none focus:border-indigo-500 ${
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
                 }`}
                 value={routeType}
                 onChange={(e) => setRouteType(e.target.value as RouteType)}
@@ -236,7 +236,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                   id="input-custom-allowed-ips"
                   type="text"
                   className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                    isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100'
+                    isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100'
                   }`}
                   placeholder="e.g. 192.168.1.0/24, 10.0.0.0/8"
                   value={customAllowedIps}
@@ -248,7 +248,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
             <div className="flex flex-col gap-1.5">
               <label className={`text-xs font-medium flex items-center gap-1 ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
                 Persistent Keepalive
-                <span className="tooltip group relative cursor-pointer text-slate-500 hover:text-slate-300">
+                <span className="tooltip group relative cursor-pointer text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span className={`absolute text-[10px] w-52 p-2 rounded-lg -top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all pointer-events-none border z-10 ${
                     isLight ? 'bg-white border-slate-200 text-slate-700 shadow-md' : 'bg-slate-950 border-slate-800 text-slate-300'
@@ -259,8 +259,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               </label>
               <select
                 id="select-persistent-keepalive"
-                className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-805' : 'bg-slate-900 border-slate-800/80 text-slate-205'
+                className={`border rounded-lg px-3 py-2 text-xs cursor-pointer focus:outline-none focus:border-indigo-500 ${
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
                 }`}
                 value={persistentKeepalive}
                 onChange={(e) => setPersistentKeepalive(parseInt(e.target.value) || 0)}
@@ -292,7 +292,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 </button>
               </label>
               <div className={`border rounded-lg p-2.5 flex items-center justify-between ${
-                isLight ? 'bg-white border-slate-200' : 'bg-slate-900 border-slate-850'
+                isLight ? 'bg-white border-slate-200' : 'bg-slate-900 border-slate-800'
               }`}>
                 <span className={`text-[11px] ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Adds an extra layer of symmetric cryptography.</span>
                 <button
@@ -316,7 +316,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 id="input-dns-override"
                 type="text"
                 className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-600'
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-600'
                 }`}
                 placeholder="Leave blank to inherit Server DNS"
                 value={dnsOverride}
@@ -328,7 +328,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
           {/* Custom key section when adding client */}
           <div className={`border-t pt-3 flex flex-col gap-2 ${isLight ? 'border-slate-200' : 'border-slate-800'}`}>
             <label className="text-xs font-medium flex items-center justify-between">
-              <span className={isLight ? 'text-slate-600' : 'text-slate-350'}>Custom Keypair Deployment</span>
+              <span className={isLight ? 'text-slate-600' : 'text-slate-400'}>Custom Keypair Deployment</span>
               <button
                 type="button"
                 onClick={() => setCustomPrivateKeyEnabled(!customPrivateKeyEnabled)}
@@ -352,7 +352,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                       type={showAddPrivateKey ? 'text' : 'password'}
                       className={`w-full border rounded-lg pl-3 pr-20 py-1.5 font-mono text-xs tracking-wide focus:outline-none focus:border-indigo-500 ${
                         isLight 
-                          ? 'bg-white border-slate-205 text-slate-700' 
+                          ? 'bg-white border-slate-200 text-slate-700' 
                           : 'bg-slate-900 border-slate-800/80 text-slate-300'
                       } ${customPrivateKey && !isValidPrivateKey(customPrivateKey) ? 'border-red-500 focus:border-red-500' : ''}`}
                       placeholder="Paste 32-byte Base64 key..."
@@ -378,7 +378,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 </div>
 
                 <div className="flex flex-col gap-1 text-xs">
-                  <span className={`${isLight ? 'text-slate-505' : 'text-slate-400'} font-medium`}>Derived Public Key</span>
+                  <span className={`${isLight ? 'text-slate-500' : 'text-slate-400'} font-medium`}>Derived Public Key</span>
                   <div className={`border rounded-lg px-3 py-1.5 font-mono text-xs select-all truncate tracking-wide ${
                     isLight ? 'bg-slate-100 border-slate-200 text-slate-500' : 'bg-slate-900 border-slate-800/80 text-slate-400'
                   }`}>
@@ -395,7 +395,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               type="button"
               onClick={resetAddForm}
               className={`px-4 py-2 text-xs font-medium transition-colors cursor-pointer ${
-                isLight ? 'text-slate-500 hover:text-slate-800' : 'text-slate-400 hover:text-slate-105'
+                isLight ? 'text-slate-500 hover:text-slate-800' : 'text-slate-400 hover:text-slate-100'
               }`}
             >
               Cancel
@@ -414,12 +414,12 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
       {/* List of active clients */}
       {clients.length === 0 ? (
         <div className={`border border-dashed rounded-2xl py-10 px-4 text-center flex flex-col items-center justify-center gap-3 ${
-          isLight ? 'bg-slate-50 border-slate-250' : 'bg-slate-950/40 border-slate-800'
+          isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/40 border-slate-800'
         }`}>
           <Users className={`w-8 h-8 ${isLight ? 'text-slate-400' : 'text-slate-600'}`} />
           <div>
             <p className={`text-sm font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>No peers defined yet</p>
-            <p className={`text-xs mt-1 ${isLight ? 'text-slate-400' : 'text-slate-505'}`}>
+            <p className={`text-xs mt-1 ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>
               Add a client peer to generate customized Client profiles, download files, or scan QR codes.
             </p>
           </div>
@@ -448,12 +448,12 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                       ? 'bg-indigo-50/90 border-y-indigo-400 border-r-indigo-400 shadow-sm shadow-indigo-100/30'
                       : 'bg-indigo-950/25 border-y-indigo-500 border-r-indigo-500 shadow-md shadow-indigo-950/10'
                     : isLight
-                      ? 'bg-slate-50 border-y-slate-205 border-r-slate-205 hover:border-slate-300 hover:bg-slate-100'
+                      ? 'bg-slate-50 border-y-slate-200 border-r-slate-200 hover:border-slate-300 hover:bg-slate-100'
                       : 'bg-slate-950/60 border-y-slate-800/80 border-r-slate-800/80 hover:border-slate-700 hover:bg-slate-950'
                 } ${
                   client.includeInConfig !== false
                     ? isSelected
-                      ? 'border-l-indigo-650 dark:border-l-indigo-500'
+                      ? 'border-l-indigo-600 dark:border-l-indigo-500'
                       : 'border-l-emerald-500 dark:border-l-emerald-400'
                     : 'border-l-slate-300 dark:border-l-slate-700 opacity-65 saturate-[60%]'
                 }`}
@@ -462,7 +462,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                   <div className="flex items-center gap-2.5">
                     <div className={`p-2 rounded-lg ${
                       isSelected 
-                        ? isLight ? 'bg-indigo-100 text-indigo-700' : 'bg-indigo-505/20 text-indigo-300' 
+                        ? isLight ? 'bg-indigo-100 text-indigo-700' : 'bg-indigo-500/20 text-indigo-300' 
                         : isLight ? 'bg-white border border-slate-200 text-slate-500' : 'bg-slate-900 border border-slate-800 text-slate-400'
                     }`}>
                       {presetIcon}
@@ -475,7 +475,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                       }`} title={client.name}>
                         {client.name}
                       </h4>
-                      <p className={`font-mono text-[10px] font-medium ${isLight ? 'text-slate-555' : 'text-slate-400'}`}>
+                      <p className={`font-mono text-[10px] font-medium ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
                         {client.assignedIp}
                       </p>
                     </div>
@@ -523,7 +523,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 {/* mini specification tags */}
                 <div className={`flex flex-wrap items-center gap-1.5 mt-3 pt-2.5 border-t ${isLight ? 'border-slate-200/60' : 'border-slate-800/60'}`}>
                   <span className={`text-[9px] px-1.5 py-0.5 border rounded ${
-                    isLight ? 'bg-white text-slate-600 border-slate-200' : 'bg-slate-900 text-slate-400 border-slate-850'
+                    isLight ? 'bg-white text-slate-600 border-slate-200' : 'bg-slate-900 text-slate-400 border-slate-800'
                   }`}>
                     {client.routeType === RouteType.ALL_TRAFFIC ? 'Full Tunnel' : 'Split Tunnel'}
                   </span>
@@ -539,8 +539,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                   {client.persistentKeepalive > 0 && (
                     <span className={`text-[9px] px-1.5 py-0.5 border rounded ${
                       isLight 
-                        ? 'bg-cyan-50 text-cyan-705 border-cyan-100' 
-                        : 'bg-cyan-900/10 text-cyan-400 border-cyan-850/20'
+                        ? 'bg-cyan-50 text-cyan-700 border-cyan-100' 
+                        : 'bg-cyan-900/10 text-cyan-400 border-cyan-800/20'
                     }`}>
                       KA: {client.persistentKeepalive}s
                     </span>
@@ -555,7 +555,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
       {/* Selected client editor */}
       {selectedClientId && selectedClient && (
         <div id="selected-client-editor" className={`border rounded-xl p-5 mt-2 flex flex-col gap-4 ${
-          isLight ? 'bg-slate-50 border-slate-205' : 'bg-slate-950/80 border-slate-800/80'
+          isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/80 border-slate-800/80'
         }`}>
           <div className="flex items-center justify-between border-b pb-2 border-dashed border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
@@ -563,7 +563,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 Edit Selected Peer Settings: {selectedClient.name}
               </span>
             </div>
-            <span className={`text-[10px] font-mono select-none px-2 py-0.5 rounded ${isLight ? 'bg-indigo-100/60 text-indigo-755' : 'bg-indigo-505/10 text-indigo-300'}`}>
+            <span className={`text-[10px] font-mono select-none px-2 py-0.5 rounded ${isLight ? 'bg-indigo-100/60 text-indigo-700' : 'bg-indigo-500/10 text-indigo-300'}`}>
               Auto-saves to browser
             </span>
           </div>
@@ -575,7 +575,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 id="edit-client-name"
                 type="text"
                 className={`border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-100'
+                  isLight ? 'bg-white border-slate-200 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-100'
                 }`}
                 value={selectedClient.name}
                 onChange={(e) => onUpdateClient(selectedClient.id, { ...selectedClient, name: e.target.value })}
@@ -588,7 +588,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 id="edit-client-ip"
                 type="text"
                 className={`border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500 font-mono ${
-                  isLight ? 'bg-white border-slate-205 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-100'
+                  isLight ? 'bg-white border-slate-200 text-slate-900' : 'bg-slate-900 border-slate-800/80 text-slate-100'
                 }`}
                 value={selectedClient.assignedIp}
                 onChange={(e) => onUpdateClient(selectedClient.id, { ...selectedClient, assignedIp: e.target.value })}
@@ -601,8 +601,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               <label className={`font-semibold ${isLight ? 'text-slate-700' : 'text-slate-300'}`}>Routing / Tunnel Type</label>
               <select
                 id="edit-client-route"
-                className={`border rounded-lg px-3 py-2 focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
+                className={`border rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:border-indigo-500 ${
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
                 }`}
                 value={selectedClient.routeType}
                 onChange={(e) => {
@@ -627,7 +627,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                   id="edit-client-custom-ips"
                   type="text"
                   className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                    isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100'
+                    isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100'
                   }`}
                   value={selectedClient.customAllowedIps || ''}
                   onChange={(e) => onUpdateClient(selectedClient.id, { ...selectedClient, customAllowedIps: e.target.value })}
@@ -639,8 +639,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               <label className={`font-semibold ${isLight ? 'text-slate-700' : 'text-slate-300'}`}>Persistent Keepalive</label>
               <select
                 id="edit-client-keepalive"
-                className={`border rounded-lg px-3 py-2 focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-805' : 'bg-slate-900 border-slate-800/80 text-slate-205'
+                className={`border rounded-lg px-3 py-2 cursor-pointer focus:outline-none focus:border-indigo-500 ${
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-200'
                 }`}
                 value={selectedClient.persistentKeepalive}
                 onChange={(e) => onUpdateClient(selectedClient.id, { ...selectedClient, persistentKeepalive: parseInt(e.target.value) || 0 })}
@@ -659,8 +659,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
               <input
                 id="edit-client-dns"
                 type="text"
-                className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-600'
+                className={`border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-indigo-550 ${
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-600'
                 }`}
                 placeholder="Leave blank to inherit Server DNS"
                 value={selectedClient.dnsOverride || ''}
@@ -677,7 +677,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                     const freshPsk = selectedClient.preSharedKey ? '' : generateSecureKey();
                     onUpdateClient(selectedClient.id, { ...selectedClient, preSharedKey: freshPsk });
                   }}
-                  className="text-[10px] text-indigo-605 dark:text-indigo-400 font-bold hover:underline"
+                  className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold hover:underline cursor-pointer"
                 >
                   {selectedClient.preSharedKey ? 'Remove PSK' : 'Generate PSK'}
                 </button>
@@ -686,7 +686,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                 id="edit-client-psk"
                 type="text"
                 className={`border rounded-lg px-3 py-2 text-xs font-mono focus:outline-none focus:border-indigo-500 ${
-                  isLight ? 'bg-white border-slate-205 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-650'
+                  isLight ? 'bg-white border-slate-200 text-slate-800' : 'bg-slate-900 border-slate-800/80 text-slate-100 placeholder:text-slate-500'
                 }`}
                 placeholder="No pre-shared key config"
                 value={selectedClient.preSharedKey || ''}
@@ -710,7 +710,7 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                       publicKey: freshPub 
                     });
                   }}
-                  className="text-[10px] text-indigo-605 dark:text-indigo-400 font-bold hover:underline flex items-center gap-1"
+                  className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <RefreshCw className="w-2.5 h-2.5 animate-spin-hover" /> Regenerate Client Key
                 </button>
@@ -721,8 +721,8 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
                   type={showEditPrivateKey ? 'text' : 'password'}
                   className={`w-full border rounded-lg pl-3 pr-20 py-2.5 font-mono text-xs tracking-wide focus:outline-none focus:border-indigo-500 ${
                     isLight 
-                      ? 'bg-white border-slate-205 text-slate-700' 
-                      : 'bg-slate-900 border-slate-800/80 text-slate-305'
+                      ? 'bg-white border-slate-200 text-slate-700' 
+                      : 'bg-slate-900 border-slate-800/80 text-slate-300'
                   } ${!isValidPrivateKey(selectedClient.privateKey) ? 'border-red-500 focus:border-red-500' : ''}`}
                   value={selectedClient.privateKey}
                   onChange={(e) => {
@@ -756,9 +756,9 @@ export const ClientManager: React.FC<ClientManagerProps> = ({
             </div>
 
             <div className="flex flex-col gap-1 text-xs">
-              <span className={`font-semibold ${isLight ? 'text-slate-705' : 'text-slate-300'} mb-1`}>Client Public Key (Auto-calculated)</span>
+              <span className={`font-semibold ${isLight ? 'text-slate-700' : 'text-slate-300'} mb-1`}>Client Public Key (Auto-calculated)</span>
               <div className={`border rounded-lg px-3 py-2.5 font-mono text-xs select-all truncate tracking-wide bg-opacity-50 ${
-                isLight ? 'bg-slate-100 border-slate-205 text-slate-500' : 'bg-slate-900 border-slate-800/80 text-slate-400'
+                isLight ? 'bg-slate-100 border-slate-200 text-slate-500' : 'bg-slate-900 border-slate-800/80 text-slate-400'
               }`}>
                 {selectedClient.publicKey}
               </div>

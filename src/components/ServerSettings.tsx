@@ -43,7 +43,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
       id="wg-server-settings-root" 
       className={`border rounded-2xl p-6 shadow-xl flex flex-col gap-6 transition-colors ${
         isLight 
-          ? 'bg-white border-slate-250 text-slate-800 shadow-slate-100/40' 
+          ? 'bg-white border-slate-200 text-slate-800 shadow-slate-100/40' 
           : 'bg-slate-900 border-slate-800 text-slate-100'
       }`}
     >
@@ -63,7 +63,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
             <h2 className={`font-sans font-semibold text-lg tracking-tight ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
               1. Server Node Settings
             </h2>
-            <p className={`text-xs ${isLight ? 'text-slate-505' : 'text-slate-400'}`}>Configure global WireGuard host parameters</p>
+            <p className={`text-xs ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Configure global WireGuard host parameters</p>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
         <div className="flex flex-col gap-1.5">
           <label className={`text-xs font-medium flex items-center gap-1.5 ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
             Public Endpoint <span className="text-red-500">*</span>
-            <span className="tooltip group relative cursor-pointer text-slate-500 hover:text-slate-300">
+            <span className="tooltip group relative cursor-pointer text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
               <HelpCircle className="w-3.5 h-3.5" />
               <span className={`absolute text-[10px] w-56 p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-10 border ${
                 isLight 
@@ -89,7 +89,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
             type="text"
             className={`border rounded-xl px-4 py-2.5 text-sm transition-colors focus:outline-none ${
               isLight 
-                ? 'bg-slate-50 border-slate-205 text-slate-900 focus:border-indigo-600 focus:bg-white placeholder:text-slate-400' 
+                ? 'bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white placeholder:text-slate-400' 
                 : 'bg-slate-950 border-slate-800 text-slate-100 focus:border-indigo-500 placeholder:text-slate-600'
             }`}
             placeholder="e.g. 159.203.41.98 or vpn.domain.com"
@@ -101,7 +101,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
         <div className="flex flex-col gap-1.5">
           <label className={`text-xs font-medium flex items-center gap-1.5 ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
             Interface Listen Port
-            <span className="tooltip group relative cursor-pointer text-slate-500 hover:text-slate-300">
+            <span className="tooltip group relative cursor-pointer text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
               <HelpCircle className="w-3.5 h-3.5" />
               <span className={`absolute text-[10px] w-48 p-2 rounded-lg -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-10 border ${
                 isLight 
@@ -119,7 +119,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
             max="65535"
             className={`border rounded-xl px-4 py-2.5 text-sm transition-colors focus:outline-none ${
               isLight 
-                ? 'bg-slate-50 border-slate-205 text-slate-900 focus:border-indigo-600 focus:bg-white' 
+                ? 'bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white' 
                 : 'bg-slate-950 border-slate-800 text-slate-100 focus:border-indigo-500'
             }`}
             value={settings.listenPort}
@@ -133,11 +133,11 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
         <div className="flex flex-col gap-1.5">
           <label className={`text-xs font-medium flex items-center gap-1.5 ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
             Internal Interface CIDR
-            <span className="tooltip group relative cursor-pointer text-slate-500 hover:text-slate-300">
+            <span className="tooltip group relative cursor-pointer text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
               <HelpCircle className="w-3.5 h-3.5" />
               <span className={`absolute text-[10px] w-56 p-2 rounded-lg -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all pointer-events-none z-10 border ${
                 isLight 
-                  ? 'bg-white border-slate-200 text-slate-705 shadow-lg' 
+                  ? 'bg-white border-slate-200 text-slate-700 shadow-lg' 
                   : 'bg-slate-950 border-slate-800 text-slate-300'
               }`}>
                 The private network range assigned to the VPN tunnel. The server usually takes .1.
@@ -150,7 +150,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
               type="text"
               className={`border rounded-xl px-4 py-2.5 text-sm transition-colors flex-1 focus:outline-none ${
                 isLight 
-                  ? 'bg-slate-50 border-slate-205 text-slate-900 focus:border-indigo-600 focus:bg-white' 
+                  ? 'bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white' 
                   : 'bg-slate-950 border-slate-800 text-slate-100 focus:border-indigo-500'
               }`}
               value={settings.interfaceCidr}
@@ -163,7 +163,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
             <button
               key={preset.val}
               type="button"
-              className={`text-xs px-3 py-1.5 rounded-lg border transition-all ${
+              className={`text-xs px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 settings.interfaceCidr === preset.val
                   ? isLight
                     ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
@@ -270,7 +270,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
             type="text"
             className={`border rounded-xl px-4 py-2.5 text-sm transition-colors focus:outline-none ${
               isLight 
-                ? 'bg-slate-50 border-slate-205 text-slate-900 focus:border-indigo-600 focus:bg-white placeholder:text-slate-400' 
+                ? 'bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white placeholder:text-slate-400' 
                 : 'bg-slate-950 border-slate-800 text-slate-100 focus:border-indigo-500 placeholder:text-slate-600'
             }`}
             placeholder="e.g. 1.1.1.1, 8.8.8.8"
@@ -282,7 +282,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
               <button
                 key={preset.label}
                 type="button"
-                className={`text-[10px] px-2 py-1 rounded-md border transition-all ${
+                className={`text-[10px] px-2 py-1 rounded-md border transition-all cursor-pointer ${
                   settings.dnsServers === preset.val
                     ? isLight
                       ? 'bg-indigo-100 border-indigo-400 text-indigo-700 font-semibold'
@@ -303,20 +303,20 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
         <div className="flex flex-col gap-2">
           <label className={`text-xs font-medium flex items-center justify-between ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
             <span>NAT Routing Firewall</span>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 cursor-pointer select-none" onClick={() => updateField('enableFirewall', !settings.enableFirewall)}>
               <input
                 id="toggle-enable-firewall"
                 type="checkbox"
                 checked={settings.enableFirewall}
                 onChange={(e) => updateField('enableFirewall', e.target.checked)}
-                className={`w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 ${isLight ? 'bg-slate-50 border-slate-300' : 'bg-slate-950 border-slate-850'}`}
+                className={`w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 cursor-pointer ${isLight ? 'bg-slate-50 border-slate-300' : 'bg-slate-950 border-slate-800'}`}
               />
               <span className={`text-[11px] font-sans ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Enable routing</span>
             </div>
           </label>
 
           <div className={`flex flex-col gap-2 border rounded-xl p-3 ${
-            isLight ? 'bg-slate-50 border-slate-205' : 'bg-slate-950 border-slate-850'
+            isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-800'
           }`}>
             <div className="flex items-center justify-between text-xs gap-2">
               <span className={`text-[11px] ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Firewall Package:</span>
@@ -325,7 +325,7 @@ export const ServerSettings: React.FC<ServerSettingsProps> = ({ settings, onChan
                 disabled={!settings.enableFirewall}
                 value={settings.firewallType}
                 onChange={(e) => updateField('firewallType', e.target.value as FirewallType)}
-                className={`border rounded-lg text-xs py-1 px-2 focus:outline-none focus:border-indigo-500 disabled:opacity-50 font-medium ${
+                className={`border rounded-lg text-xs py-1 px-2 focus:outline-none focus:border-indigo-500 disabled:opacity-50 font-medium cursor-pointer ${
                   isLight ? 'bg-white border-slate-200 text-slate-700' : 'bg-slate-900 border-slate-800 text-slate-300'
                 }`}
               >

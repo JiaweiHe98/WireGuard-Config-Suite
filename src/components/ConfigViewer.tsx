@@ -92,7 +92,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
       if (isComment) {
         processedLine = <span className={isLight ? 'text-slate-400 italic select-none' : 'text-slate-500 italic select-none'}>{line}</span>;
       } else if (isSection) {
-        processedLine = <span className="text-indigo-600 dark:text-indigo-405 font-bold">{line}</span>;
+        processedLine = <span className="text-indigo-600 dark:text-indigo-400 font-bold">{line}</span>;
       } else if (line.includes('=')) {
         const [opt, ...valArr] = line.split('=');
         const val = valArr.join('=');
@@ -118,7 +118,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
       id="wg-config-viewer-root" 
       className={`border rounded-2xl p-6 shadow-xl flex flex-col gap-6 transition-colors ${
         isLight 
-          ? 'bg-white border-slate-250 text-slate-800 shadow-slate-100/40' 
+          ? 'bg-white border-slate-200 text-slate-800 shadow-slate-100/40' 
           : 'bg-slate-900 border-slate-800 text-slate-100'
       }`}
     >
@@ -144,7 +144,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
 
         {/* Tab Selector */}
         <div className={`flex p-1.5 rounded-xl border ${
-          isLight ? 'bg-slate-100 border-slate-200' : 'bg-slate-950 border-slate-850'
+          isLight ? 'bg-slate-100 border-slate-200' : 'bg-slate-950 border-slate-800'
         }`}>
           <button
             id="tab-server"
@@ -176,11 +176,11 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
 
       {activeTab === 'client' && clients.length > 0 && selectedClient && (
         <div className={`flex items-center justify-between border rounded-xl px-4 py-3 text-xs gap-4 flex-wrap ${
-          isLight ? 'bg-slate-50 border-slate-150' : 'bg-slate-950 border-slate-850'
+          isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-800'
         }`}>
           <div className="flex items-center gap-2">
             <span className={isLight ? 'text-slate-500 font-sans' : 'text-slate-400 font-sans'}>Active Client Profile:</span>
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-150 dark:border-indigo-500/20 px-2.5 py-1 rounded-lg">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 px-2.5 py-1 rounded-lg">
               {selectedClient.name}
             </span>
             <span className={`font-mono text-[11px] ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>({selectedClient.assignedIp})</span>
@@ -194,7 +194,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
               showQr 
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/10' 
                 : isLight 
-                  ? 'bg-white border-slate-205 text-slate-605 hover:text-slate-800 hover:border-slate-350' 
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-800 hover:border-slate-300' 
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
             }`}
           >
@@ -206,11 +206,11 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
 
       {activeTab === 'server' && (
         <div className={`flex items-center justify-between border rounded-xl px-4 py-3 text-xs gap-4 flex-wrap ${
-          isLight ? 'bg-slate-50 border-slate-150' : 'bg-slate-950 border-slate-850'
+          isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-800'
         }`}>
           <div className="flex items-center gap-2">
             <span className={isLight ? 'text-slate-500 font-sans' : 'text-slate-400 font-sans'}>Active Server Profile:</span>
-            <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-150 dark:border-indigo-500/20 px-2.5 py-1 rounded-lg">
+            <span className="font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 px-2.5 py-1 rounded-lg">
               {serverSettings.interfaceCidr || 'wg0'}
             </span>
             <span className={`font-mono text-[11px] ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>(Port {serverSettings.listenPort})</span>
@@ -224,7 +224,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
               showQr 
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/10' 
                 : isLight 
-                  ? 'bg-white border-slate-205 text-slate-605 hover:text-slate-800 hover:border-slate-350' 
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-800 hover:border-slate-300' 
                   : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
             }`}
           >
@@ -240,7 +240,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
           <div className={`border rounded-2xl p-6 flex flex-col items-center justify-center gap-4 text-center animate-fadeIn flex-1 ${
             isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-800/80'
           }`}>
-            <div className="bg-white p-4 rounded-2xl shadow-xl flex items-center justify-center border border-slate-250 transition-transform hover:scale-102">
+            <div className="bg-white p-4 rounded-2xl shadow-xl flex items-center justify-center border border-slate-200 transition-transform hover:scale-102">
               <canvas ref={canvasRef} id="qrcode-canvas" />
             </div>
             <div className="max-w-sm flex flex-col gap-1.5">
@@ -262,11 +262,11 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
           </div>
         ) : (
           <div className={`border rounded-2xl flex-1 flex flex-col overflow-hidden max-h-[500px] ${
-            isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-850'
+            isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950 border-slate-800'
           }`}>
             {/* Action Bar inside coding block */}
             <div className={`flex items-center justify-between px-4 py-2 border-b z-10 ${
-              isLight ? 'bg-slate-100/50 border-slate-200' : 'bg-slate-950/60 border-slate-850/80'
+              isLight ? 'bg-slate-100/50 border-slate-200' : 'bg-slate-950/60 border-slate-800/80'
             }`}>
               <div className="flex items-center gap-1.5 text-xs font-mono">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/30"></span>
@@ -282,7 +282,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
                   onClick={handleCopy}
                   className={`p-1.5 rounded-lg border transition-colors flex items-center gap-1.5 text-xs font-sans font-medium cursor-pointer ${
                     isLight 
-                      ? 'bg-white border-slate-200 text-slate-650 hover:text-slate-800' 
+                      ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-800' 
                       : 'bg-slate-900 border-slate-800/80 text-slate-400 hover:text-slate-100 hover:border-slate-700'
                   }`}
                   title="Copy to clipboard"
@@ -306,7 +306,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
                   onClick={handleDownload}
                   className={`p-1.5 rounded-lg border transition-colors flex items-center gap-1.5 text-xs font-sans font-medium cursor-pointer ${
                     isLight 
-                      ? 'bg-white border-slate-200 text-slate-650 hover:text-slate-800' 
+                      ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-800' 
                       : 'bg-slate-900 border-slate-800/80 text-slate-400 hover:text-slate-100 hover:border-slate-700'
                   }`}
                   title="Download configuration"
@@ -328,7 +328,7 @@ export const ConfigViewer: React.FC<ConfigViewerProps> = ({
       </div>
 
       <div className={`border rounded-xl p-4.5 flex gap-3 text-xs leading-normal ${
-        isLight ? 'bg-slate-50 border-slate-200 text-slate-600' : 'bg-slate-950/40 border-slate-850 text-slate-400'
+        isLight ? 'bg-slate-50 border-slate-200 text-slate-600' : 'bg-slate-950/40 border-slate-800 text-slate-400'
       }`}>
         <ArrowUpRight className="w-5 h-5 text-indigo-500 dark:text-indigo-400 flex-shrink-0" />
         <div>
