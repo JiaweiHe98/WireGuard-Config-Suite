@@ -2,7 +2,7 @@
 
 Welcome to the **WireGuard Config Suite**—an offline-first, browser-secure, high-fidelity configuration builder designed to visually design, manage, and deploy industrial-grade WireGuard VPN structures. 
 
-This guide serves as a complete reference for using the web editor, understanding cryptographic key derivation, deploying the configuration to server endpoints, and automating setup using the built-in deployer scripts.
+This guide serves as a complete reference for using the web editor, understanding cryptographic key derivation, and verifying deployments to server endpoints securely.
 
 ---
 
@@ -43,43 +43,6 @@ This tool guarantees structural and cryptographic consistency:
 * Navigate tabs between `Server wg0.conf` and client profile configurations.
 * Click **Show QR Code** for any active profile. Scan Client QR Codes straight into the official WireGuard applications for iOS, iPadOS, and Android.
 * Use the **Export Python Script** tab to download your automated terminal deployer.
-
----
-
-## 💻 Server deployment Guide
-
-The generated self-contained Python script is compatible with:
-* **Debian & Ubuntu** (via `apt`)
-* **Fedora, RHEL, CentOS & Rocky Linux** (via `dnf` or `yum`)
-* **Alpine Linux** (via `apk` with `iproute2` dependencies)
-* **Arch Linux** (via `pacman`)
-
-### Installation Execution
-
-1. Upload the generated python deployer script to your VPS server or copy its contents into a file named `/tmp/setup_vpn.py`.
-2. Open your server core terminal and execute:
-   ```bash
-   # Enter superuser status
-   sudo -i
-   
-   # Write content / run script
-   chmod +x /tmp/setup_vpn.py
-   python3 /tmp/setup_vpn.py
-   ```
-
-### What the Python script automates:
-1. **Dependency Engine**: Installs `wireguard-tools`, kernel modules, headers, `qrencode` for visual terminal validation, and `iptables` for forwarding rules.
-2. **IP Kernel Forwarding**: Appends required variables to `/etc/sysctl.conf` to allow IPv4 router routing and IPv6 packet pass-through:
-   ```ini
-   net.ipv4.ip_forward = 1
-   net.ipv6.conf.all.forwarding = 1
-   ```
-3. **Core Permissions Security**: Secures sensitive credentials setting directory and config modes to root readable only (`chmod 600` / `/etc/wireguard`).
-4. **Boot Persistence Control**: Starts the systemd unit and hooks it to boot.
-   ```bash
-   systemctl enable wg-quick@wg0
-   systemctl start wg-quick@wg0
-   ```
 
 ---
 
