@@ -1,0 +1,6 @@
+{
+  "name": "WireGuard Config Suite",
+  "description": "An offline-first browser-based configuration generator for WireGuard servers and client peers, complete with secure key generation, automatic peer routing presets, visual QR codes, and a custom Bash-to-Python server setup installer script.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
