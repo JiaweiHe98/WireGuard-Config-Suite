@@ -240,7 +240,7 @@ export default function App() {
             }`}>
               <BookOpen className="w-5 h-5" />
             </div>
-            <div className="max-w-xl">
+            <div className="flex-1">
               <h3 className={`text-sm font-semibold ${theme === 'light' ? 'text-slate-800' : 'text-slate-200'}`}>How to establish your secure tunnel:</h3>
               <p className={`text-xs mt-1 leading-relaxed ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>
                 Configure your public server settings in <strong>Step 1</strong>, manage client configurations in <strong>Step 2</strong>, and preview or download complete configuration file sets or scan client mobile QR codes under <strong>Step 3</strong>.
